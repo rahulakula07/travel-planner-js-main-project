@@ -54,7 +54,7 @@ document.getElementById("loginSubmitBtn").addEventListener("click", async (event
 
         // Redirect based on role
         if (role === "admin") {
-          location.href = "../admindasboard/admindashboadr.html"; // Admin dashboard
+          location.href = "../admindashboard/admindashboard.html"; // Admin dashboard
         } else if (role === "user") {
           location.href = "../userdashboard/userdashboard.html"; // User dashboard
         } else {
