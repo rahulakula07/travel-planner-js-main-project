@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Content</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="managecontent.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="managecontent.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div id="container" class="container">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbarNav" 
+              aria-controls="adminNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="adminNavbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../admindashboard/admindashboard.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Manage Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container my-5">
+    <h2>Manage Content - Add Tour Guide Details</h2>
+    <form id="tourGuideForm">
+      <!-- Guide Name -->
+      <div class="mb-3">
+        <label for="guideName" class="form-label">Guide Name</label>
+        <input type="text" class="form-control" id="guideName" required>
+        <span id="guideNameError" class="error-message"></span>
+      </div>
+
+      <!-- Main Location -->
+      <div class="mb-3">
+        <label for="mainLocation" class="form-label">Select Main Location</label>
+        <select class="form-select" id="mainLocation" required>
+          <option value="">Choose Location</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Goa">Goa</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Lakshadweep">Lakshadweep</option>
+        </select>
+        <span id="mainLocationError" class="error-message"></span>
+      </div>
+
+      <!-- Tourist Place -->
+      <div class="mb-3">
+        <label for="tourPlace" class="form-label">Select Tourist Place</label>
+        <select class="form-select" id="tourPlace" required disabled>
+          <option value="">First select a main location</option>
+        </select>
+        <span id="tourPlaceError" class="error-message"></span>
+      </div>
+
+      <!-- Tour Description -->
+      <div class="mb-3">
+        <label for="tourDescription" class="form-label">Tour Description</label>
+        <textarea class="form-control" id="tourDescription" rows="3" required></textarea>
+        <span id="tourDescriptionError" class="error-message"></span>
+      </div>
+
+      <!-- Charge Per Day -->
+      <div class="mb-3">
+        <label for="chargePerDay" class="form-label">Charge Per Day</label>
+        <input type="number" class="form-control" id="chargePerDay" required>
+        <span id="chargePerDayError" class="error-message"></span>
+      </div>
+
+      <!-- Charge Per Hour -->
+      <div class="mb-3">
+        <label for="chargePerHour" class="form-label">Charge Per Hour</label>
+        <input type="number" class="form-control" id="chargePerHour" required>
+        <span id="chargePerHourError" class="error-message"></span>
+      </div>
+
+      <!-- Submit Button -->
+      <button id="managesubmit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="managecontent.js"></script>
+</body>
+
+</html>
+
