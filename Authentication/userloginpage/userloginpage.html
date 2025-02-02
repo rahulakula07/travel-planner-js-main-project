@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     <link rel="stylesheet" href="userloginpage.css">
 </head>
 <body>
     <header>
-    <div id="menu-bar" class="fas fa-bars"></div>
+        <div id="menu-bar" class="fas fa-bars"></div>
         <a href="#" class="logo"><span>t</span>raval</a>
         <nav class="navbar">
             <a href="#home">home</a>
             <a href="#book">book</a>
             <a href="#packages">packages</a>
-            <a href="#servies">servies</a>
+            <a href="#services">services</a>
             <a href="#review">review</a>
-            <a href="#contact">conntact</a>
+            <a href="#contact">contact</a>
         </nav>
 
         <div class="icons">
@@ -27,38 +31,308 @@
         <form action="" class="search-bar-container">
             <input type="search" id="search-bar" placeholder="search here...">
             <label for="search-bar" class="fa fa-search"></label>
-
         </form>
     </header>
+    
     <!-- home section start -->
     <section class="home" id="home">
         <div class="content">
             <h3>adventure is worthwhile</h3>
-            <p>discover ne places with us,adventure awaits</p>
+            <p>discover new places with us, adventure awaits</p>
             <a href="#" class="btn">discover more</a>
         </div>
         <div class="controls">
-            <span class="vid-btn" active data-src="/videos/0_Beach_Ocean_3840x2160.mp4"></span>
+            <span class="vid-btn active" data-src="/videos/0_Beach_Ocean_3840x2160.mp4"></span>
             <span class="vid-btn" data-src="/videos/6240_India_Indian_1920x1080 (1).mp4"></span>
             <span class="vid-btn" data-src="/videos/6251_India_Agra_1920x1080.mp4"></span>
             <span class="vid-btn" data-src="/videos/6968_India_Agra_1920x1080.mp4"></span>
             <span class="vid-btn" data-src="/videos/5114962_Nature_Sea_3840x2160.mp4"></span>
-
         </div>
         <div class="video-container">
-          <video src="/videos/6240_India_Indian_1920x1080 (1).mp4" id="video-slider" loop autoplay muted></video>  
+          <video src="/videos/6240_India_Indian_1920x1080 (1).mp4" id="video-swiper-slide" loop autoplay muted></video>  
         </div>
-        <!-- <video controls>
-            <source src="/videos/0_Beach_Ocean_3840x2160.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> -->
-        
     </section>
     <!-- home section ends -->
+<!-- pakages section starts -->
+<section class="packages" id="packages">
+<h1 class="heading">
+    <span>p</span>
+    <span>l</span>
+    <span>a</span>
+    <span>c</span>
+    <span>e</span>
+    <span>s</span>
+</h1>
+<div class="box-container">
+    <div class="box">
+        <img src="../../img/Charminar.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>hyderabad</h3>
+            <p>The capital of Telangana, Hyderabad is known as the "City of Pearls" and is famous for its rich history, Charminar, and delicious Hyderabadi Biryani.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="../../img/goa.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>Goa</h3>
+            <p>A popular tourist destination famous for its stunning beaches, vibrant nightlife, and Portuguese heritage.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="../../img/Kerala.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>Kerala</h3>
+            <p> Known as "God’s Own Country," Kerala is famous for its backwaters, lush greenery, and Ayurvedic treatments.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="../../img/Lakshadweep.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>Lakshadweep</h3>
+            <p>A group of 36 coral islands known for their untouched beauty, marine life, and adventure water sports.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="../../img/Maldives.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>Maldives</h3>
+            <p> A tropical paradise in the Indian Ocean, known for its white sandy beaches, crystal-clear waters, and luxury overwater resorts.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+    <div class="box">
+        <img src="../../img/Maldives.jpg" alt="">
+        <div class="content">
+            <h3><i class="fas fa-map-market-alt"></i>Andhra pradesh</h3>
+            <p> A tropical paradise in the Indian Ocean, known for its white sandy beaches, crystal-clear waters, and luxury overwater resorts.</p>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <a href="#" class="btn">book now</a>
+        </div>
+    </div>
+</div>
+
+</section>
 
 
+<!-- pakages section ends -->
+    <!-- book section starts -->
+    <section class="book" id="book">
+        <h1 class="heading">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>k</span>
+            <span class="space"></span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="../../img/3255292.jpg" alt="">
+            </div>
+            <form action="">
+                <div class="inputbox">
+                    <h3>Where to</h3>
+                    <input type="text" placeholder="place name">
+                </div>
+                <div class="inputbox">
+                    <h3>how many</h3>
+                    <input type="number" placeholder="number of guests">
+                </div>
+                <div class="inputbox">
+                    <h3>arrival</h3>
+                    <input type="date">
+                </div>
+                <div class="inputbox">
+                    <h3> ph.number</h3>
+                    <input type="number">
+                </div>
+                <input type="submit" class="btn" value="book now">
+            </form>
+        </div>
+    </section>
+    <!-- book section ends -->
 
+    <!-- review section starts -->
+    <section class="services" id="services">
+        <h1 class="heading">
+            <span>r</span>
+            <span>e</span>
+            <span>v</span>
+            <span>i</span>
+            <span >e</span>
+            <span>w</span>
+            <span>s</span>
+        </h1>
+    <div class=" swiper mySwiper review-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="../../img/boy1.jpg" alt="">
+                    <h3>Amit Sharma</h3>
+                    <p>"This website made my trip planning so easy! I found the perfect destination, great hotel deals, and even local attractions. Highly recommend!"</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="../../img/boy2.jpg" alt="">
+                        <h3>Ravi Verma </h3>
+                        <p>"I was confused about where to go, but the website’s recommendations helped me pick Maldives, and it was the best decision ever!"
 
+                        </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="../../img/girl1.jpg" alt="">
+                        <h3>Priya Patel </h3>
+                        <p>"The reviews and travel tips were really helpful. I planned my trip to Hyderabad smoothly and had an amazing time exploring the city!"</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="../../img/girl2.jpg" alt="">
+                        <h3>Sara Khan</h3>
+                        <p>"I appreciate the honest reviews and budget-friendly options. My Kerala vacation was well-planned, thanks to this website!"</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="../../img/girl3.jpg" alt="">
+                        <h3>Ananya Reddy </h3>
+                        <p>"Andhra Pradesh has so much to offer, and this website gave me great itinerary ideas. Would definitely use it again!"</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- review section starts -->
+     <!-- footer section strats -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa voluptatum est ab illum culpa non natus quidem ad, aliquid eligendi, quis exercitationem cumque esse neque repellat fuga similique voluptatem. Tempore?</p>
+            </div>
+            <div class="box">
+                <h3>branch location</h3>
+                <a href="">hyderabad</a>
+                <a href="">andhra pradesh</a>
+                <a href="">goa</a>
+                <a href="">Maldives</a>
+                <a href="">Kerala</a>
+                <a href="">Lakshadweep</a>
+                
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="">home</a>
+                <a href="">places</a>
+                <a href="">book now</a>
+                <a href="">reviews</a> 
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="">facebook</a>
+                <a href="">instagram</a>
+                <a href="">twitter</a>
+                <a href="">linkedin</a> 
+            </div>
+        </div>
+        <h1 class="credit">created by <span>Akula rahul</span>| all rights are reserved!</h1>
+
+    </section>
+     <!-- footer section ends-->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="userloginpage.js"></script>
 </body>
 </html>
