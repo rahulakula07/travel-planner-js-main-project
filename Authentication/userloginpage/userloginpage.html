@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="userloginpage.css">
+</head>
+<body>
+    <header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="#" class="logo"><span>t</span>raval</a>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#book">book</a>
+            <a href="#packages">packages</a>
+            <a href="#servies">servies</a>
+            <a href="#review">review</a>
+            <a href="#contact">conntact</a>
+        </nav>
+
+        <div class="icons">
+            <i class="fa fa-search" id="search-btn"></i>
+            <i class="fa fa-user" id="login-btn"></i>
+        </div>
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fa fa-search"></label>
+
+        </form>
+    </header>
+    <!-- home section start -->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>adventure is worthwhile</h3>
+            <p>discover ne places with us,adventure awaits</p>
+            <a href="#" class="btn">discover more</a>
+        </div>
+        <div class="controls">
+            <span class="vid-btn" active data-src="/videos/0_Beach_Ocean_3840x2160.mp4"></span>
+            <span class="vid-btn" data-src="/videos/6240_India_Indian_1920x1080 (1).mp4"></span>
+            <span class="vid-btn" data-src="/videos/6251_India_Agra_1920x1080.mp4"></span>
+            <span class="vid-btn" data-src="/videos/6968_India_Agra_1920x1080.mp4"></span>
+            <span class="vid-btn" data-src="/videos/5114962_Nature_Sea_3840x2160.mp4"></span>
+
+        </div>
+        <div class="video-container">
+          <video src="/videos/6240_India_Indian_1920x1080 (1).mp4" id="video-slider" loop autoplay muted></video>  
+        </div>
+        <!-- <video controls>
+            <source src="/videos/0_Beach_Ocean_3840x2160.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> -->
+        
+    </section>
+    <!-- home section ends -->
+
+
+
+
+    <script src="userloginpage.js"></script>
+</body>
+</html>
