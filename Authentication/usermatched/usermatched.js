@@ -15,39 +15,40 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Get Guide ID from URL
-const urlParams = new URLSearchParams(window.location.search);
-const guideId = urlParams.get("guideId");
-console.log("Guide ID from URL:", guideId); // Debugging guide ID
-
 const guideDetailsContainer = document.getElementById("guideDetails");
 
-if (guideId) {
-    const guideRef = ref(database, `guides/${guideId}`);
-    
-    get(guideRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const guide = snapshot.val();
-            console.log("Fetched Guide Data:", guide); // Debugging Firebase data
+// Reference to all guides
+const guidesRef = ref(database, "guides");
 
-            // Display guide details
-            guideDetailsContainer.innerHTML = `
-                <h2>${guide.name || "Unknown Guide"}</h2>
-                <p><strong>Main Location:</strong> ${guide.mainLocation || "Not Provided"}</p>
-                <p><strong>Tour Place:</strong> ${guide.tourPlace || "Not Provided"}</p>
-                <p><strong>Description:</strong> ${guide.tourDescription || "No description available"}</p>
-                <p><strong>Charge Per Day:</strong> ${guide.chargePerDay ? `₹${guide.chargePerDay}` : "N/A"}</p>
-                <p><strong>Charge Per Hour:</strong> ${guide.chargePerHour ? `₹${guide.chargePerHour}` : "N/A"}</p>
-            `;
+get(guidesRef)
+    .then((snapshot) => {
+        if (snapshot.exists()) {
+            const guides = snapshot.val();
+            console.log("Fetched Guides Data:", guides); // Debugging Firebase data
+
+            // Loop through each guide and display details
+            guideDetailsContainer.innerHTML = "<h2>Available Guides</h2>";
+            Object.keys(guides).forEach((guideId) => {
+                const guide = guides[guideId];
+                guideDetailsContainer.innerHTML += `
+                    <div class="guide-card">
+                        <h3>${guide.name || "Unknown Guide"}</h3>
+                        <p><strong>Main Location:</strong> ${guide.mainLocation || "Not Provided"}</p>
+                        <p><strong>Tour Place:</strong> ${guide.tourPlace || "Not Provided"}</p>
+                        <p><strong>Description:</strong> ${guide.tourDescription || "No description available"}</p>
+                        <p><strong>Charge Per Day:</strong> ${guide.chargePerDay ? `₹${guide.chargePerDay}` : "N/A"}</p>
+                        <p><strong>Charge Per Hour:</strong> ${guide.chargePerHour ? `₹${guide.chargePerHour}` : "N/A"}</p>
+                        <a href="guideDetails.html?guideId=${guideId}">Book Now</a>
+                        <hr>
+                    </div>
+                `;
+            });
         } else {
-            console.warn("No guide found in Firebase.");
-            guideDetailsContainer.innerHTML = "<p>No guide found.</p>";
+            console.warn("No guides found in Firebase.");
+            guideDetailsContainer.innerHTML = "<p>No guides available.</p>";
         }
-    }).catch((error) => {
-        console.error("Error fetching guide:", error);
+    })
+    .catch((error) => {
+        console.error("Error fetching guides:", error);
         guideDetailsContainer.innerHTML = "<p>Error loading guide details.</p>";
     });
-} else {
-    console.warn("No Guide ID in URL");
-    guideDetailsContainer.innerHTML = "<p>Invalid guide selection.</p>";
-}
