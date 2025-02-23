@@ -66,3 +66,27 @@ footer {
     background: #1e7e34;
     transform: translateY(0);
 }
+.book-now {
+    background-color: #28a745; /* Green color */
+    color: white; /* White text */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.book-now:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly increase size */
+}
+
+.book-now:active {
+    background-color: #1e7e34; /* Even darker green when clicked */
+    transform: scale(0.98); /* Slightly shrink on click */
+}
+
