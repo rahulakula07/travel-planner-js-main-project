@@ -185,3 +185,7 @@ logoutBtn.addEventListener("click", () => {
     });
 });
 
+let logo=document.getElementById("logo")
+logo.addEventListener("click",()=>{
+    window.location.href="../../userloginpage/userloginpage.html"
+})

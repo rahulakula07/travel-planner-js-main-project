@@ -27,13 +27,20 @@
         </nav>
 
         <div class="icons">
-            <!-- <i class="fa fa-search" id="search-btn"></i> -->
-            <i class="fa fa-user" id="login-btn "></i>
-            <i class="fa fa-sign-out-alt" id="logoutBtn"  title="Logout"></i>
+
+                <i class="fa fa-user" id="login-btn" class="tooltip-icon">
+                  <span class="tooltip-text">Login</span>
+                </i>
+                <span id="user-email" class="user-email"></span>
+                <i class="fa fa-sign-out-alt" id="logoutBtn" class="tooltip-icon">
+                  <span class="tooltip-text">Logout</span>
+                </i>
+
+              
         </div>
         </div>
         <form action="" class="search-bar-container">
-            <input type="search" id="search-bar" placeholder="search here...">
+            <!-- <input type="search" id="search-bar" placeholder="search here..."> -->
             <label for="search-bar" class="fa fa-search"></label>
         </form>
     </header>

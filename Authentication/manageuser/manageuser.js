@@ -204,3 +204,8 @@ logoutBtn.addEventListener("click", () => {
         }
     });
 });
+
+let log=document.getElementById("log")
+log.addEventListener("click",()=>{
+  window.location.href="../../userloginpage/userlogin.html"
+})

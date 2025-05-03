@@ -4,12 +4,12 @@ let menu = document.querySelector("#menu-bar");
 let navbar = document.querySelector(".navbar");
 let videobtn = document.querySelectorAll(".vid-btn");
 
-window.onscroll = () => {
-  searchbtn.classList.remove("fa-times");
-  searchbar.classList.remove("active");
-  menu.classList.remove("fa-times");
-  navbar.classList.remove("active");
-};
+// window.onscroll = () => {
+//   searchbtn.classList.remove("fa-times");
+//   searchbar.classList.remove("active");
+//   menu.classList.remove("fa-times");
+//   navbar.classList.remove("active");
+// };
 
 // searchbtn.addEventListener("click", () => {
 //   searchbtn.classList.toggle("fa-times");
@@ -107,6 +107,8 @@ bookingForm.addEventListener("submit", async (event) => {
     phone: document.getElementById("phone").value.trim(),
     bookingDate: new Date().toISOString()
   };
+  console.log(bookingData.name,"name");
+  
 
   if (!bookingData.name || !bookingData.guests || !bookingData.state ||
     !bookingData.place || !bookingData.arrival || !bookingData.phone) {
@@ -215,3 +217,15 @@ logoutBtn.addEventListener("click", () => {
         }
     });
 });
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    const userRefPath = "users/" + user.email;
+    console.log("Looking for user at:", userRefPath);
+    
+    let displayname = document.getElementById("user-email");
+      displayname.innerText = `${user.email}`; 
+      displayname.style.fontSize="15px"   
+  }
+});
+
