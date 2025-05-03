@@ -187,6 +187,26 @@ body {
     margin: 0 .5rem;
 }
 
+.btn-discover {
+    background: var(--orange);
+    color: #fff;
+    margin-top: 50px;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    border-radius: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-discover:hover {
+    background: darkorange;
+    transform: scale(1.05);
+    color: #fff;
+}
+
 .home .controls .vid-btn.active {
     background: var(--orange); 
 }
@@ -315,6 +335,7 @@ body {
 .review-slider .box:hover {
     transform: translateY(-5px);
     box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.15);
+    padding: 10px;
 }
 
 .review-slider .box img {
@@ -323,7 +344,8 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border: 4px solid #ff7f50; /* Adds a nice border color */
+    border: 4px solid #ff7f50; 
+    
 }
 
 .review-slider .box h3 {
@@ -338,11 +360,22 @@ body {
     padding: 1rem 0;
     line-height: 1.5;
 }
+#logoutBtn {
+    padding: 5px 12px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .review-slider .box .stars i {
-    color: var(--orange); /* Gives stars a golden color */
+    color: var(--orange); 
     font-size: 1.7rem;
 }
+.swal-wide {
+    width: 40em !important; 
+    font-size: 1.2rem;
+    
+  }
 
 .footer{
     background: #333;
@@ -391,23 +424,6 @@ body {
    color: var(--orange); 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 1200px) {
     html {
         font-size: 55%;
@@ -447,11 +463,30 @@ body {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 320px) {
     html {
         font-size: 55%;
     }
     .heading span {
         font-size: 2.5rem;
     }
+    @media (max-width: 320px) {
+        .review-slider .box {
+          text-align: center !important;
+        }
+      
+        .review-slider .box img {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      
+      .icons i {
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .icons  {
+       margin-left: 5px;
+      }
+      
 }

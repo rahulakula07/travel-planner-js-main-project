@@ -11,10 +11,10 @@ window.onscroll = () => {
   navbar.classList.remove("active");
 };
 
-searchbtn.addEventListener("click", () => {
-  searchbtn.classList.toggle("fa-times");
-  searchbar.classList.toggle("active");
-});
+// searchbtn.addEventListener("click", () => {
+//   searchbtn.classList.toggle("fa-times");
+//   searchbar.classList.toggle("active");
+// });
 
 menu.addEventListener("click", () => {
   menu.classList.toggle("fa-times");
@@ -89,6 +89,10 @@ stateSelect.addEventListener("change", function () {
   }
 });
 
+let bookings=document.getElementById("mybooking").addEventListener("click",()=>{
+  location.href="../manageuser/manageuser.html"
+})
+
 // Handle booking form submission
 const bookingForm = document.getElementById("bookingForm");
 bookingForm.addEventListener("submit", async (event) => {
@@ -106,49 +110,108 @@ bookingForm.addEventListener("submit", async (event) => {
 
   if (!bookingData.name || !bookingData.guests || !bookingData.state ||
     !bookingData.place || !bookingData.arrival || !bookingData.phone) {
-    Swal.fire("Error", "All fields are required!", "error");
-    return;
+    return Swal.fire({
+      icon: 'error',
+      title: 'Missing Fields',
+      text: 'Please fill in all the fields before submitting.'
+    });
   }
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      Swal.fire("Authentication Required", "Please login before booking.", "warning");
-      return;
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Not Logged In',
+        text: 'Please log in to book your trip.'
+      });
     }
 
     try {
       bookingData.userId = user.uid;
       const bookingsRef = ref(database, "userBookings");
       await push(bookingsRef, bookingData);
-      console.log("Booking stored successfully:", bookingData);
 
       const guidesRef = ref(database, "guides");
       const guidesSnapshot = await get(guidesRef);
+
       if (!guidesSnapshot.exists()) {
-        console.log("No guides found in Firebase.");
-        Swal.fire("No Guides Available", "No matching tour guides found.", "warning");
-        return;
+        return Swal.fire({
+          icon: 'info',
+          title: 'No Guides Available',
+          text: 'Sorry, no tour guides found at the moment.'
+        });
       }
 
       const guides = guidesSnapshot.val();
-      let matchingGuides = [];
-
-      Object.entries(guides).forEach(([guideId, guide]) => {
-        if (guide.mainLocation === bookingData.state && guide.tourPlace === bookingData.place) {
-          matchingGuides.push({ id: guideId, ...guide });
-        }
-      });
+      const matchingGuides = Object.entries(guides).filter(([_, guide]) =>
+        guide.mainLocation === bookingData.state && guide.tourPlace === bookingData.place
+      ).map(([id, guide]) => ({ id, ...guide }));
 
       if (matchingGuides.length > 0) {
-        console.log("Matching guides found:", matchingGuides);
         localStorage.setItem("matchingGuides", JSON.stringify(matchingGuides));
-        window.location.href = "../usermatched/usermatched.html";
+        Swal.fire({
+          icon: 'success',
+          title: 'Booking Confirmed!',
+          text: 'Redirecting you to matched guides...',
+          timer: 2000,
+          showConfirmButton: false
+        }).then(() => {
+          window.location.href = "../usermatched/usermatched.html";
+        });
       } else {
-        Swal.fire("No Guides Found", "No guides match your selected location and place.", "warning");
+        Swal.fire({
+          icon: 'warning',
+          title: 'No Guides Found',
+          text: 'No guides match your selected location and place.'
+        });
       }
     } catch (error) {
       console.error("Booking error:", error);
-      Swal.fire("Error", error.message || "Something went wrong!", "error");
+      Swal.fire({
+        icon: 'error',
+        title: 'Booking Failed',
+        text: error.message || "Something went wrong. Please try again."
+      });
     }
   });
+});
+
+
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click", () => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to log out?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, log me out',
+        cancelButtonText: 'No, cancel',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            auth.signOut()
+                .then(() => {
+                    console.log("User signed out successfully.");
+                    Swal.fire({
+                        icon: "success",
+                        title: "Logged Out",
+                        text: "You have been signed out.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = "../../index.html";
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error signing out:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Logout Failed",
+                        text: "Please try again."
+                    });
+                });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            console.log("Logout canceled.");
+        }
+    });
 });

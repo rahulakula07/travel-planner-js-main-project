@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
@@ -48,7 +50,7 @@ footer {
 .guide-card a {
     display: inline-block;
     text-decoration: none;
-    background: #28a745; /* Green color */
+    background: #28a745; 
     color: white;
     font-weight: bold;
     padding: 10px 15px;
@@ -58,7 +60,7 @@ footer {
 }
 
 .guide-card a:hover {
-    background: #218838; /* Darker Green */
+    background: #218838;
     transform: translateY(-2px);
 }
 
@@ -67,8 +69,8 @@ footer {
     transform: translateY(0);
 }
 .book-now {
-    background-color: #28a745; /* Green color */
-    color: white; /* White text */
+    background-color: #28a745; 
+    color: white; 
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -81,12 +83,26 @@ footer {
 }
 
 .book-now:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly increase size */
+    background-color: #218838; 
+    transform: scale(1.05); 
 }
 
 .book-now:active {
-    background-color: #1e7e34; /* Even darker green when clicked */
-    transform: scale(0.98); /* Slightly shrink on click */
+    background-color: #1e7e34;
+    transform: scale(0.98); 
 }
 
+.logo span {
+    color: orange;
+    
+  }
+  .logo{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder
+  }
+  .container >a{
+    font-size: 1.5em;
+  
+  }
+  

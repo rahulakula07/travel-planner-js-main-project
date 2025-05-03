@@ -1,4 +1,5 @@
-/* User Card Styling */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 .user-card {
   background: #fff;
   border-radius: 12px;
@@ -63,8 +64,90 @@
 }
 
 .btn-primary:hover {
-  background-color: #e68900; /* Darker Orange on Hover */
+  background-color: #e68900; 
   border-color: #c76c00;
-  transform: scale(1.05); /* Slightly Enlarges */
+  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
 }
+
+.logo span {
+  color: orange !important;
+  
+}
+.logo{
+  text-decoration: none;
+  color: white;
+  font-weight: bolder
+}
+.container >a{
+  font-size: 1.5em;
+
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.user-card .card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+}
+
+.user-card .card:hover {
+  transform: scale(1.03);
+}
+
+.user-card h3 {
+  margin-top: 0;
+}
+
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-btn,
+.reject-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.confirm-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.reject-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Status Color Classes */
+.pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.confirmed {
+  color: green;
+  font-weight: bold;
+}
+
+.rejected {
+  color: red;
+  font-weight: bold;
+}
+
+

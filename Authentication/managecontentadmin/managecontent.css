@@ -1,47 +1,180 @@
-  /* Styling for container */
-  #container {
-    background: linear-gradient(135deg, #3a506b, #5bc0be);
-    padding: 15px;
-    border-radius: 8px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-  /* Navbar Styling */
+:root {
+  --primary-color: #f1f3f4;
+  --secondary-color: #e2e8f0;
+  --accent-color: #4caf50;
+  --dark-bg-color: #2f3b52;
+  --light-bg-color: #ffffff;
+  --button-bg-color: #007bff;
+  --button-hover-bg-color: #0056b3;
+  --text-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --transition-time: 0.3s;
+}
+
+#container {
+  background: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+.navbar {
+  background-color: var(--light-bg-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  padding: 10px 20px; /* Reduced padding */
+  margin: 0; /* Removed margin */
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: var(--dark-bg-color);
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: var(--dark-bg-color);
+  font-weight: 500;
+  transition: color var(--transition-time) ease-in-out;
+  margin-right: 20px; /* Adjusted margin */
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color);
+}
+
+#managesubmit {
+  background: var(--button-bg-color);
+  border: none;
+  color: var(--light-bg-color);
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+  transition: background var(--transition-time) ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#managesubmit:hover {
+  background: var(--button-hover-bg-color);
+}
+
+
+.container {
+  background-color: var(--light-bg-color);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+@media (max-width: 320px) {
   .navbar {
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px 15px;
   }
-  .navbar-brand {
-    font-weight: bold;
-    color: #333;
-  }
+
   .navbar-nav .nav-link {
-    color: #333;
-    transition: color 0.3s ease-in-out;
-  }
-  .navbar-nav .nav-link:hover {
-    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-right: 15px;
   }
 
-  /* Button Styling */
   #managesubmit {
-    background: linear-gradient(135deg, #1b262c, #3282b8);
-    border: none;
-    color: white;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
+    font-size: 14px;
   }
 
-  #managesubmit:hover {
-    background: linear-gradient(135deg, #3282b8, #1b262c);
-  }
-
-  /* General Styling */
   .container {
-    background-color: #e0e0e0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
   }
+
+  #container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 8px 18px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.9rem;
+    margin-right: 18px;
+  }
+
+  #managesubmit {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  #container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+
+  #managesubmit {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 25px;
+  }
+
+  #container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .navbar {
+    padding: 12px 25px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-right: 25px;
+  }
+
+  #managesubmit {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 30px;
+  }
+
+  #container {
+    padding: 25px;
+  }
+}
+
+.logo span {
+  color: orange;
+  
+}
+.logo{
+  text-decoration: none;
+  color: grey;
+  font-weight: bolder
+}
+.container >a{
+  font-size: 1.5em;
+
+}

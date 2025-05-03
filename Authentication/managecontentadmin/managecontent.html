@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manage Content</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="managecontent.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="managecontent.css">
+
 </head>
 
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div id="container" class="container">
-      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <a href="#" class="logo"><span>P</span>lan<span>&</span>Pack</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbarNav" 
               aria-controls="adminNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,7 +36,7 @@
             <a class="nav-link" href="#">Reports</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
           </li>
         </ul>
       </div>
@@ -96,7 +100,7 @@
       </div>
 
       <!-- Submit Button -->
-      <button id="managesubmit" type="submit" class="btn btn-primary">Submit</button>
+      <button id="managesubmit" type="submit" class="btn btn-primary" style="background-color: #e68900;">Submit</button>
     </form>
   </div>
 
