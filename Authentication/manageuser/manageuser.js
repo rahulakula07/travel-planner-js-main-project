@@ -19,7 +19,7 @@ const auth = getAuth(app);
 
 document.addEventListener("DOMContentLoaded", async () => {
   const guideDetailsContainer = document.getElementById("guideDetails");
-  const loader = document.getElementById("loader"); // Get loader element
+  const loader = document.getElementById("loader"); 
 
   const guidesRef = ref(database, "guides");
   const userBookingsRef = ref(database, "userBookings");
