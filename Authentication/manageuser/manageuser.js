@@ -19,11 +19,16 @@ const auth = getAuth(app);
 
 document.addEventListener("DOMContentLoaded", async () => {
   const guideDetailsContainer = document.getElementById("guideDetails");
+  const loader = document.getElementById("loader"); // Get loader element
 
   const guidesRef = ref(database, "guides");
   const userBookingsRef = ref(database, "userBookings");
 
   let currentUser = null;
+
+  // Show loader and hide content
+  loader.style.display = "block";
+  guideDetailsContainer.style.display = "none";
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -37,6 +42,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const guidesSnapshot = await get(guidesRef);
     const userBookingsSnapshot = await get(userBookingsRef);
+
+    // Hide loader and show content
+    loader.style.display = "none";
+    guideDetailsContainer.style.display = "block";
 
     if (guidesSnapshot.exists() && userBookingsSnapshot.exists()) {
       const guides = guidesSnapshot.val();
@@ -60,30 +69,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (filteredGuides.length > 0) {
         filteredGuides.forEach(guide => {
-            const guideCard = document.createElement("div");
-            guideCard.classList.add("guide-card");
-    
-            // Capitalize first letter of each word in the guide's name
-            const formattedName = guide.name
-                ? guide.name.replace(/\b\w/g, char => char.toUpperCase())
-                : "Unknown Guide";
-    
-            guideCard.innerHTML = `
-                <h3>${formattedName}</h3>
-                <p><strong>Main Location:</strong> ${guide.mainLocation || "Not Provided"}</p>
-                <p><strong>Tour Place:</strong> ${guide.tourPlace || "Not Provided"}</p>
-                <p><strong>Description:</strong> ${guide.tourDescription || "No description available"}</p>
-                <p><strong>Charge Per Day:</strong> ${guide.chargePerDay ? `₹${guide.chargePerDay}` : "N/A"}</p>
-                <p><strong>Charge Per Hour:</strong> ${guide.chargePerHour ? `₹${guide.chargePerHour}` : "N/A"}</p>
-                <p><strong>Status:</strong> Notset</p> 
-                <hr>
-            `;
-            guideDetailsContainer.appendChild(guideCard);
-        });
-    
-    
+          const guideCard = document.createElement("div");
+          guideCard.classList.add("guide-card");
 
-        // Event listener for the Book Now buttons
+          const formattedName = guide.name
+            ? guide.name.replace(/\b\w/g, char => char.toUpperCase())
+            : "Unknown Guide";
+
+          guideCard.innerHTML = `
+            <h3>${formattedName}</h3>
+            <p><strong>Main Location:</strong> ${guide.mainLocation || "Not Provided"}</p>
+            <p><strong>Tour Place:</strong> ${guide.tourPlace || "Not Provided"}</p>
+            <p><strong>Description:</strong> ${guide.tourDescription || "No description available"}</p>
+            <p><strong>Charge Per Day:</strong> ${guide.chargePerDay ? `₹${guide.chargePerDay}` : "N/A"}</p>
+            <p><strong>Charge Per Hour:</strong> ${guide.chargePerHour ? `₹${guide.chargePerHour}` : "N/A"}</p>
+            <p><strong>Status:</strong> Notset</p> 
+            <hr>
+          `;
+          guideDetailsContainer.appendChild(guideCard);
+        });
+
         document.querySelectorAll(".book-now").forEach(button => {
           button.addEventListener("click", async (event) => {
             if (!currentUser) {
@@ -109,15 +114,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         guideDetailsContainer.innerHTML += "<p>No guides available for the booked places.</p>";
       }
     } else {
-      console.warn("No data found in Firebase.");
       guideDetailsContainer.innerHTML = "<h2>Booked Guides</h2><p>No guides available.</p>";
     }
   } catch (error) {
+    loader.style.display = "none";
+    guideDetailsContainer.style.display = "block";
     console.error("Error fetching guides:", error);
     guideDetailsContainer.innerHTML = "<h2>Booked Guides</h2><p>Error loading guide details.</p>";
   }
 });
-
 
 async function bookGuide(guideId, userName, userUID) {
   try {
@@ -135,20 +140,18 @@ async function bookGuide(guideId, userName, userUID) {
     if (guideSnapshot.exists()) {
       const guide = guideSnapshot.val();
 
-
       Swal.fire({
         icon: 'success',
         title: 'Booking Successful',
-        text: `You have successfully booked guide ${guide.name}.`,
         html: `
-                    <p><strong>Guide:</strong> ${guide.name}</p>
-                    <p><strong>Tour Place:</strong> ${guide.tourPlace}</p>
-                    <p><strong>Main Location:</strong> ${guide.mainLocation}</p>
-                    <p><strong>Description:</strong> ${guide.tourDescription || 'No description available'}</p>
-                    <p><strong>Charge Per Day:</strong> ₹${guide.chargePerDay || 'N/A'}</p>
-                    <p><strong>Charge Per Hour:</strong> ₹${guide.chargePerHour || 'N/A'}</p>
-                    <p><strong>Status:</strong> Your booking is confirmed!</p>
-                `,
+          <p><strong>Guide:</strong> ${guide.name}</p>
+          <p><strong>Tour Place:</strong> ${guide.tourPlace}</p>
+          <p><strong>Main Location:</strong> ${guide.mainLocation}</p>
+          <p><strong>Description:</strong> ${guide.tourDescription || 'No description available'}</p>
+          <p><strong>Charge Per Day:</strong> ₹${guide.chargePerDay || 'N/A'}</p>
+          <p><strong>Charge Per Hour:</strong> ₹${guide.chargePerHour || 'N/A'}</p>
+          <p><strong>Status:</strong> Your booking is confirmed!</p>
+        `,
         confirmButtonText: 'OK'
       });
 
@@ -168,44 +171,44 @@ async function bookGuide(guideId, userName, userUID) {
 
 const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", () => {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Do you want to log out?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, log me out',
-        cancelButtonText: 'No, cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            auth.signOut()
-                .then(() => {
-                    console.log("User signed out successfully.");
-                    Swal.fire({
-                        icon: "success",
-                        title: "Logged Out",
-                        text: "You have been signed out.",
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(() => {
-                        window.location.href = "../../index.html";
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error signing out:", error);
-                    Swal.fire({
-                        icon: "error",
-                        title: "Logout Failed",
-                        text: "Please try again."
-                    });
-                });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            console.log("Logout canceled.");
-        }
-    });
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Do you want to log out?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, log me out',
+    cancelButtonText: 'No, cancel',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      auth.signOut()
+        .then(() => {
+          console.log("User signed out successfully.");
+          Swal.fire({
+            icon: "success",
+            title: "Logged Out",
+            text: "You have been signed out.",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            window.location.href = "../../index.html";
+          });
+        })
+        .catch((error) => {
+          console.error("Error signing out:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Logout Failed",
+            text: "Please try again."
+          });
+        });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      console.log("Logout canceled.");
+    }
+  });
 });
 
-let log=document.getElementById("log")
-log.addEventListener("click",()=>{
-  window.location.href="../../userloginpage/userlogin.html"
-})
+let log = document.getElementById("log");
+log.addEventListener("click", () => {
+  window.location.href = "/Authentication/userloginpage/userloginpage.html";
+});

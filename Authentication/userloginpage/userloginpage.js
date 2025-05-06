@@ -218,14 +218,23 @@ logoutBtn.addEventListener("click", () => {
     });
 });
 
+// onAuthStateChanged(auth, async (user) => {
+//   if (user) {
+//     const userRefPath = "users/" + user.email;
+//     console.log("Looking for user at:", userRefPath);
+    
+//     let displayname = document.getElementById("user-email");
+//       displayname.innerText = `${user.email}`; 
+//       displayname.style.fontSize="15px"   
+//   }
+// });
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    const userRefPath = "users/" + user.email;
-    console.log("Looking for user at:", userRefPath);
-    
-    let displayname = document.getElementById("user-email");
-      displayname.innerText = `${user.email}`; 
-      displayname.style.fontSize="15px"   
+    const tooltip = document.getElementById("login-tooltip");
+    tooltip.innerText = user.email;
+
+    console.log("User logged in:", user.email);
   }
 });
+
 
